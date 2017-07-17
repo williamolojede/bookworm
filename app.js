@@ -1,7 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const app = express();
 
+// use sessions for tracking logins
+app.use(session({
+  secret: 'js ninja',
+  resave: true,
+  saveUnitialized: false,
+}));
+
+
+// mongodb connection
+mongoose.connect('mongodb://localhost:27017/bookworm');
+const db = mongoose.connection;
+// mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
 // parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

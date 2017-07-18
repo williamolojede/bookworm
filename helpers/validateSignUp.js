@@ -1,5 +1,5 @@
 // validate request
-function validateReq({ email, name, favoriteBook, password, confirmPassword }) {
+function validateSignUp({ email, name, favoriteBook, password, confirmPassword }) {
   if (email && name && favoriteBook && password && confirmPassword) {
     // confirm if password match
     if(password === confirmPassword) {
@@ -12,4 +12,4 @@ function validateReq({ email, name, favoriteBook, password, confirmPassword }) {
   }
 }
 
-module.exports = validateReq;
+module.exports = validateSignUp;
